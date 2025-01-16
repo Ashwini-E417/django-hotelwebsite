@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<div class="container mt-3">
+        
+    <h3 class=" text-center">THE PARADISE - CONTACT AND LOCATIONN</h3>
+    <p class=" text-center">The Paradise is located in the Mumbai, which is renowned as the dream city thriving entertainment, corporate and cultural centre. From here it is just moments to the top businesses, attractions, shopping and nightlife in Mumbai. For more information about the hotel or to book accommodation for an upcoming stay, please contact us today.</p>
+
+    <div class="row mt-2">
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+        <img src="{% static 'images/recept.jpg' %}" alt="reception" >
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4 mt-5">
+        <h5 class="text-center">Address</h5>
+                <hr class="hrdesign">
+                <br>
+                The Paradise, Anand Nagar, 
+                Mhada Colony, Mulund East, 
+                Mumbai- 400081, Maharashtra
+                <br><br>
+                <p><i class="bi-telephone-fill text-dark"></i>&nbsp;&nbsp;&nbsp;9999999999</p>
+                <p><i class="bi-envelope-fill text-dark"></i>&nbsp;&nbsp;&nbsp;abc@gmail.com</p>
+      </div>
+    </div>
+    <br><br>
+    <form class="con_form px-5 pt-3 pb-3" action="/contact" method="POST">
+      {% csrf_token %}
+      <legend class="text-center">Reach Out to Us</legend>
+      {% if errmsg %}
+         <div class="alert alert-danger">
+             {{errmsg}}
+        </div>
+      {% endif %}
+      {% if succmsg %}
+         <div class="alert alert-success">
+             {{succmsg}}
+        </div>
+      {% endif %}
+      <div class="mt-3 row">
+        <div class="col-sm-4">
+          <label for="fname" class="form-label">First Name:<sup style="color: red;">*</sup></label>
+          <input type="text" class="form-control" name="fname" placeholder="First Name">
+        </div>
+        <div class="col-sm-4">
+          <label for="lname" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" name="lname" placeholder="Last Name">
+        </div>
+        <div class="col-sm-4">
+          <label for="email" class="form-label">Email ID:<sup style="color: red;">*</sup></label>
+          <input type="email" class="form-control" name="email" placeholder="Email ID">
+        </div>
+      </div>
+      <div class="mt-3">
+        <label for="msg" class="form-label">Your Message or Query:<sup style="color: red;">*</sup></label>
+        <textarea name="msg" class="form-control" placeholder="Your Message"></textarea>
+      </div>
+      <div class="text-center"> 
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+  </div> <!-- closed containner-->
+{% endblock 'main' %}

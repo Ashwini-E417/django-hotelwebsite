@@ -1,0 +1,93 @@
+body {
+    color: black;
+    font-family: "Poppins", sans-serif;
+}
+
+.banner {
+    background-color: rgb(114, 111, 112);
+    color: black;
+    border-radius: 10px;
+    height: 45px;
+    padding: 10px;
+}
+
+h1,h2,h3 {
+    color: indigo;
+} 
+
+h4,h5,h6 {
+    color: green;
+}
+
+img {
+    height: 350px;
+    width: 100%;
+}
+
+.hrwhite {
+    width: 175px;
+    height: 5px;
+    margin-bottom:10px;
+    border: 3px solid white;
+    background-color: white;
+    opacity: 1;
+    display: block;
+  }
+
+.hrdesign {
+    width: 175px;
+    height: 3px;
+    margin:0 auto 10px auto;
+    border: 3px solid rgb(44, 207, 248);
+    opacity: 1;
+    display: block;
+  }
+
+.con_form {
+    background-color: whitesmoke;
+}
+
+.fimg {
+    background-color: whitesmoke;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 1px gray;
+    margin-bottom: 5px;
+    margin-right: 20px;
+    width: 120px;
+}
+
+footer {
+    background-color:black;
+    color: aliceblue;
+}
+
+span {
+    color: whitesmoke;
+}
+
+
+.binput {
+    border: none;
+    border-bottom: 1px;
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+}
+
+.cart_sep {
+    border-right: 1px solid black;
+}
+
+#menulist {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    position: sticky;
+    top:150px;
+    left:1500px;
+    background-color: rgb(35, 180, 247);
+}
+

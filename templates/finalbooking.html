@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<!-- Main section -->
+<div class="container mt-3">
+    {% if errmsg %}
+        <div class="container alert alert-danger text-center">
+            <i class="bi bi-cart-dash display-6"></i> &nbsp;<p style="font-size: larger;">{{errmsg}}</p>
+        </div>
+    {% endif %}
+    {% for x in details %}
+    <div class="row bg-light">
+        <div class="col-md-9 mt-3 cart_sep">
+            <!--Booking details-->
+            <h5 class="banner">Booking details</h5>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="{{x.rid.cimage.url}}" alt="" class="img-fluid rounded" style="height: 200px;">
+                    <br>
+                </div>
+                <div class="col-md-8 mt-1" >
+                    <div class="row">
+                        
+                        <label  class="col-3 col-form-label fw-bold">Hotel:</label>
+                        <label  class="col-9 col-form-label">The Paradise </label>
+
+                        <label  class="col-3 col-form-label fw-bold">Address:</label>
+                        <label  class="col-9 col-form-label">{{x.rid.Address}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Room:</label>
+                        <label  class="col-9 col-form-label">{{x.rid.rname}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Check-in:</label>
+                        <label  class="col-9 col-form-label">{{x.checkin}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Check-out:</label>
+                        <label  class="col-9 col-form-label">{{x.checkout}}</label>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Customer dtails-->
+            <h5 class="banner">Customer details</h5>
+            <div class="row" style="padding-left: 50px; padding-right: 50px; padding-bottom: 10px;">
+
+                <label  class="col-4 col-form-label fw-bold">Client Name:</label>
+                <label  class="col-8 col-form-label">{{x.cname}} </label>
+
+                <label  class="col-4 col-form-label fw-bold">Mobile Number:</label>
+                <label  class="col-8 col-form-label">{{x.mob}}</label>
+
+                <label  class="col-4 col-form-label fw-bold">Email ID:</label>
+                <label  class="col-8 col-form-label">{{x.email}}</label>
+
+                <label  class="col-4 col-form-label fw-bold">No. of Adults:</label>
+                <label  class="col-8 col-form-label">{{x.adults}}</label>
+
+                <label  class="col-4 col-form-label fw-bold">No. of Children:</label>
+                <label  class="col-8 col-form-label">{{x.child}}</label>
+            </div>
+            
+        </div>
+        <div class="col-md-3" style="background-color: whitesmoke;">
+            <h5 class="banner mt-3">Confirm Booking</h5>
+            <ul style="list-style-type: none; padding-left: 10px; margin: 0;">
+                <li><b>Food & Bevarages:</b>&Tab;500 Rs</li>
+                <li><b>Room Fare(1 hr):</b>&Tab;{{x.rid.Price}} Rs</li>
+                <l1><b>Number of days:</b>&Tab;{{hour}}</l1>
+                <li><b>Total Amount:</b>&Tab; {{price}} Rs</li>
+                <li><b>GST (18 %):</b>&Tab;{{gst}}</li>
+                <hr>
+                <li><b>Net Amount:</b>&Tab;{{net}} Rs</li>
+                <li><b>Advance payment:</b>&Tab;{{adv}} Rs</li>
+                <li><b>Rest Payment:</b>&Tab;{{rest}} Rs</li>
+                <br>
+                <!-- Paypal Button section -->
+                <a href="/bookconfirm/{{x.id}}" class="btn btn-success">Book Now</a>
+                
+                <!-- Paypal button end-->
+            </ul>
+        </div>
+    </div>
+         {% endfor %}       
+</div> <!-- closed containner-->
+
+{% endblock 'main' %}

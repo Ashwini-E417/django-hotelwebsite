@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<div class="container">
+    <h4 class="banner mt-3">My Booking</h4>
+    {% if errmsg1 %}
+        <div class="container alert alert-info text-center">
+            <i class="bi bi-cart-dash display-6"></i> &nbsp;<p style="font-size: larger;">{{errmsg1}}</p>
+        </div>
+    {% endif %}
+    {% if errmsg %}
+        <div class="alert alert-danger">
+            {{errmsg}}
+        </div>
+    {% endif %}
+    {% if succmsg %}
+        <div class="alert alert-success">
+            {{succmsg}}
+        </div>
+    {% endif %}
+    {% for x in booking %}
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <img src="{{x.rid.cimage.url}}" alt="" class="img-thumbnail">
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                        
+                <label  class="col-3 col-form-label fw-bold">Hotel:</label>
+                <label  class="col-9 col-form-label">The Paradise </label>
+
+                <label  class="col-3 col-form-label fw-bold">Address:</label>
+                <label  class="col-9 col-form-label">{{x.rid.Address}}</label>
+
+                <label  class="col-3 col-form-label fw-bold">Room:</label>
+                <label  class="col-9 col-form-label">{{x.rid.rname}}</label>
+
+                <label  class="col-3 col-form-label fw-bold">Check-in:</label>
+                <label  class="col-9 col-form-label">{{x.checkin}}</label>
+
+                <label  class="col-3 col-form-label fw-bold">Check-out:</label>
+                <label  class="col-9 col-form-label">{{x.checkout}}</label>
+            </div>
+            <div class="text-center">
+                {% if  x.checkin.date >= today.date and x.status == 2 and x.checkout.date > today.date %}
+                <a href="/cancelbooking/{{x.id}}"><label class="py-2 px-4 text-bg-danger border border-danger rounded">Cancel Booking</label></a>
+                {% endif %}
+
+                {% if x.status == 3 %}
+                <label class="py-2 px-4 text-bg-danger border border-danger rounded">Cancelled</label>
+                {% elif x.status == 2 %}
+                <label class="py-2 px-4 text-bg-success border border-success rounded">Booked</label>
+                {% elif x.status == 4 %}
+                <a href="/remove/{{x.id}}"><input type="button" value="Remove" class="btn btn-info"></a>  
+                    {% if x.checkin.date >= today.date %}              
+                    <a href="/booknow/{{x.id}}"><input type="button" value="Book Now" class="btn btn-success"></a>
+                    {% endif %}
+                {% else %}
+                <label class="py-2 px-4 text-bg-success border border-success rounded">Visited</label>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock 'main' %}

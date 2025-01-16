@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+    <!-- Main section -->
+    <div><img src="{% static 'images/cover.jpeg' %}" style="height: 550px;width: 100%;"></div>
+    <div class="container text-center">
+        
+        <div>
+            <h1 class="mt-3"><u>Welcome</u></h1>
+            <h3 class="mt-5">Our Paradise</h3>
+            <hr class="hrdesign">
+            <p>Beyond words, racing upwards, at the speed of sound, barely touching the ground, and yet firmly set, “The Paradise” at Thane stands soaring and superior at 60 storeys. Rising ceremoniously in pristine white and divine blue, it serenades the sky and wispy floating clouds with a passion unknown to date. After all, colour is the place where intellect and creation meet. In this city of style, it masquerades as an alluring, extraordinary and distinguished landmark of South Mumbai, snug in the company of legendary, privileged icons like the Willingdon Club, Malabar Hill and Nepean Sea Road. Naturally, it aims to offer a mélange of contemporary coupled with global architecture, its craftsmanship eliminating the universal stereotype.</p>
+
+            <p>Being amongst the tallest tower in India, it is definitely a signature of novelty embellishing the Commercial Queen. Here, the tremendous efforts of the protagonists provide state-of-the-art amenities escalating the spirit of ecstasy, taking to flight the fantasies of the crème de la crème.</p>
+
+            <p class="text-center mb-5">The occupants of this wonder are those whose cerebral acute have catapulted them to instant distinction in their respective fields, those who have exceeded the conventional boundaries of their trade and tackled every facet of their life with keen intellect. Choosing an opulent home here is harmonious with paradise. Just a whisper of &apos;The Paradise&apos; is enough to turn all lows into highs. Ultimately, &apos;every status has to have its symbol&apos;.</p>    
+        </div>
+
+        <hr>
+
+        <div>
+          <h3>Facilities</h3>
+          <hr class="hrdesign">
+          <p>The Paradise boasts the best facilitates and why not. Right from planning The Paradise, to raising it to where it stands today, everything gone into its making it a majestic structure is a class apart. The Paradise is a world of goodness.</p>
+          <p>The Paradise  hosts a whole lot of fineries to rest the mind, body and palette:</p>
+
+          <div class="row mb-5">
+            <div class="col-3 mt-2">
+              <img src="{% static 'images/library.png' %}" alt="" srcset="" class="img-fluid fimg">
+            </div>
+            <div class="col-3 mt-2">
+              <img src="{% static 'images/banquet.png' %}" alt="" srcset="" class="img-fluid fimg">
+            </div>
+            <div class="col-3 mt-2">
+              <img src="{% static 'images/restaurent.png' %}" alt="" srcset="" class="img-fluid fimg">
+            </div>
+            <div class="col-3 mt-2">
+              <img src="{% static 'images/pool.png' %}" alt="" srcset="" class="img-fluid fimg">
+            </div>
+          </div>          
+        </div>  
+
+        <hr>
+
+        <div>
+          <h3 class="mt-3">Gallery</h3>
+          <hr class="hrdesign">
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <img src="{% static 'images/g1.jpg' %}" alt="" width="100%" height="350px" srcset="">
+            </div>
+            <div class="col-md-6 mt-2">
+              <img src="{% static 'images/g2.jpg' %}" alt="" width="100%" height="350px" srcset="">
+            </div>
+            <div class="col-md-6 mt-2">
+              <img src="{% static 'images/g3.jpg' %}" alt="" width="100%" height="350px" srcset="">
+            </div>
+            <div class="col-md-6 mt-2 pb-3">
+              <img src="{% static 'images/g4.jpg' %}" alt="" width="100%" height="350px" srcset="">
+            </div>
+          </div>
+        </div>
+    
+    </div><!--Container closed-->
+{% endblock 'main' %}

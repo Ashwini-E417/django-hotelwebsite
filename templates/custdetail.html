@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<!-- Main section -->
+<div class="container mt-3">
+    {% for x in room %}
+    <div class="row bg-light">
+        <div class="col-md-9 mt-3 cart_sep">
+            <!--Booking details-->
+            <h5 class="banner">Booking details</h5>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="{{x.cimage.url}}" alt="" class="img-fluid rounded" style="height: 200px;">
+                    <br>
+                </div>
+                <div class="col-md-8 mt-1" >
+                    <div class="row">
+                        
+                        <label  class="col-3 col-form-label fw-bold">Hotel:</label>
+                        <label  class="col-9 col-form-label">The Paradise </label>
+
+                        <label  class="col-3 col-form-label fw-bold">Address:</label>
+                        <label  class="col-9 col-form-label">{{x.Address}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Room:</label>
+                        <label  class="col-9 col-form-label">{{x.rname}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Check-in:</label>
+                        <label  class="col-9 col-form-label">{{checkin}}</label>
+
+                        <label  class="col-3 col-form-label fw-bold">Check-out:</label>
+                        <label  class="col-9 col-form-label">{{checkout}}</label>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Customer dtails-->
+            <h5 class="banner">Customer details</h5>
+            <div style="padding-left: 50px; padding-right: 50px; padding-bottom: 10px;">
+                    {% if errmsg %}
+                        <div class="alert alert-danger">
+                            {{errmsg}}
+                        </div>
+                    {% endif %}
+                <form method="POST" action="/confirm/{{x.id}}/{{checkin}}/{{checkout}}">
+                    {% csrf_token %}
+                      <div class="mb-3 row">
+                        <label for="cname" class="col-sm-3 col-form-label">Client Name:<sup class="text-danger">*</sup></label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" name="cname" placeholder="Customer Name">
+                        </div>
+                      </div>
+
+                      <div class="mb-3 row">
+                        <label for="mob" class="col-sm-3 col-form-label">Mobile Number:<sup class="text-danger">*</sup></label>
+                        <div class="col-sm-9">
+                            <input type="number" name="mob" class="form-control" placeholder="Mobile Number">
+                        </div>
+                      </div>
+
+                      <div class="mb-3 row">
+                        <label for="email" class="col-sm-3 col-form-label">Email:<sup class="text-danger">*</sup></label>
+                        <div class="col-sm-9">
+                            <input type="email" name="email" class="form-control" placeholder="email">
+                        </div>
+                      </div>
+
+                      <div class="mb-3 row">
+                        <label for="adults" class="col-sm-3 col-form-label">No. of Adults:<sup class="text-danger">*</sup></label>
+                        <div class="col-sm-9">
+                            <input type="number" name="adults" class="form-control" placeholder="No. of Adults"> 
+                        </div>
+                      </div>
+
+                      <div class="mb-3 row">
+                        <label for="child" class="col-sm-3 col-form-label">No. of Children:</label>
+                        <div class="col-sm-9">
+                            <input type="number" name="child" class="form-control" placeholder="No. of Children">                             </div>
+                      </div>
+                      <a href="/cancel/{{x.id}}" class="btn btn-secondary"  style="width: auto;">Cancel</a>
+                      <input type="submit" value="Confirm" class="btn btn-secondary">
+                </form>
+            </div>
+            
+        </div>
+        <div class="col-md-3" style="background-color: whitesmoke;">
+            <h5 class="banner mt-3">Confirm Booking</h5>
+            <ul style="list-style-type: none; padding-left: 10px; margin: 0;">
+                <li><b>Food and Bevarages:</b>&nbsp;500 Rs</li>
+                <li><b>Room Fare (24 hrs):</b>&nbsp;{{x.Price}} Rs</li>
+                <l1><b>Number of hour:</b>&nbsp;{{hour}}</l1>
+                <li><b>Total Amount:</b>&nbsp; {{price}} Rs</li>
+                <li><b>GST (18 %):</b>&nbsp;{{gst}} Rs</li>
+                <hr>
+                <li><b>Net Amount:</b>&nbsp;{{net}} Rs</li>
+                <li><b>Advance payment:</b>&nbsp;{{adv}} Rs</li>
+                <li><b>Rest Payment:</b>&nbsp;{{rest}} Rs</li>
+                
+                &nbsp;
+            </ul>
+            
+        </div>
+    </div>
+    {% endfor %}            
+</div> <!-- closed containner-->
+
+{% endblock 'main' %}
